@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { StyleSheet, Text, View, Image, ScrollView , TouchableHighlight} from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight, ActivityIndicator} from 'react-native'
 import WinSize from '../config'
 
 const styles = StyleSheet.create({
@@ -41,7 +41,7 @@ const {img , container , txt , scrollArea, item} = styles
 
 const GalleryItem = (props) => {
     return (
-      <TouchableHighlight onPress = {() => props.handleClick(props.url)}>
+      <TouchableHighlight onPress = {() => props.handleClick(props.fullSizeUrl, props.name)}>
         <View style = {item}>
           <Image source={{uri : props.url}} style = {img}></Image>
           <Text style={txt}>{props.name}</Text>
@@ -55,11 +55,13 @@ export default Gallery = (props) => {
       <ScrollView style = {scrollArea}>
         <View style = {container}>
         {
-          props.imageArr.length ? props.imageArr.map((item, index) => <GalleryItem 
-                    handleClick = {props.onGalleryItemClick /*props.onGalleryItemClick(item.urls.small*/} 
-                    key={index} 
-                    name = {item.user.name} 
-                    url = {item.urls.small} />) : <Text>{"Nothing"}</Text>
+          // props.imageArr.length ? props.imageArr.map((item, index) => <GalleryItem 
+          //           handleClick = {props.onGalleryItemClick} 
+          //           key={index} 
+          //           name = {item.user.name} 
+          //           url = {item.urls.small}
+          //           fullSizeUrl = {item.urls.regular} />) :
+                    <ActivityIndicator size="large" animating={true} color="white"/> 
         }
         </View>
       </ScrollView>

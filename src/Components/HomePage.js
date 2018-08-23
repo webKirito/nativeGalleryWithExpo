@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {View} from 'react-native'
-import Header from './Header'
 import Gallery from './Gallery'
 
 
@@ -16,7 +15,7 @@ export default class HomePage extends Component {
   }
 
   static navigationOptions = {
-      title : 'Home'
+      title : 'Just Gallery'
   }
 
   componentDidMount = async () => {
@@ -30,16 +29,16 @@ export default class HomePage extends Component {
     }
   }
   
-  onGalleryItemClick = (url) => {
+  onGalleryItemClick = (url, name) => {
     this.props.navigation.navigate('GalleryPageTemplate', {
-      url
+      url,
+      name
     });
   }
 
   render() {
     return (
       <View style = {{flex : 1}}>
-       <Header />
        <Gallery imageArr = {this.state.imageArr} onGalleryItemClick={this.onGalleryItemClick}/>
       </View> 
     );
