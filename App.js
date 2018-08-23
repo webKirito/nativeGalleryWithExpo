@@ -1,14 +1,14 @@
 import React, {Component} from 'react'
 import HomePage from './src/Components/HomePage'
+import GalleryPageTemplate from './src/Components/GalleryPageTemplate'
 import {createStackNavigator} from 'react-navigation'
-import {Text} from 'react-native'
 
 
 
 
 const Routes = createStackNavigator({
   Home : HomePage,
-  NoHome : HomePage
+  GalleryPageTemplate : GalleryPageTemplate
 }, {
   initialRouteName : 'Home',
 })

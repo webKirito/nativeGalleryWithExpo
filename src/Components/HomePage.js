@@ -8,8 +8,8 @@ import Gallery from './Gallery'
 
 export default class HomePage extends Component {
   
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       imageArr : []
     }  
@@ -30,11 +30,17 @@ export default class HomePage extends Component {
     }
   }
   
+  onGalleryItemClick = (url) => {
+    this.props.navigation.navigate('GalleryPageTemplate', {
+      url
+    });
+  }
+
   render() {
     return (
       <View style = {{flex : 1}}>
        <Header />
-       <Gallery imageArr = {this.state.imageArr}/>
+       <Gallery imageArr = {this.state.imageArr} onGalleryItemClick={this.onGalleryItemClick}/>
       </View> 
     );
   }
