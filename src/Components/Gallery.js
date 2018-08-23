@@ -1,43 +1,52 @@
-import React, {Component} from 'react'
-import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight, ActivityIndicator} from 'react-native'
+import React from 'react'
+import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight} from 'react-native'
 import WinSize from '../config'
+
+const shadow = {
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 2,
+  },
+  shadowOpacity: 0.27,
+  shadowRadius: 1.81,
+  elevation: 2,
+}
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#F5F5F5',
     flexDirection : 'row',
     alignItems: 'center',
     flexWrap : 'wrap',
     justifyContent: 'space-around',
-    backgroundColor: 'blue'
   },
   item : {
-    height : WinSize.height / 3,
+    height : WinSize.height / 2.7,
     width: WinSize.width / 2.1,
     flexDirection : 'column',
     alignItems : 'center',
-    justifyContent : 'center',
+    justifyContent : 'flex-start',
     backgroundColor: 'white',
     borderRadius : 10,
     marginVertical : 10,
     paddingVertical : 10,
+    ...shadow
   },
   img : {
+    marginTop: 10,
     height : WinSize.height / 3 * 0.75,
     width: WinSize.width / 2.4,
   },
   txt : {
     paddingVertical : 10,
     width : 100,
-    fontSize: 10,
+    fontSize: 14,
     textAlign : 'center'
   },
-  scrollArea : {
-    flex : 2
-  }
 });
 
-const {img , container , txt , scrollArea, item} = styles
+const {img , container , txt , item} = styles
 
 const GalleryItem = (props) => {
     return (
@@ -52,16 +61,16 @@ const GalleryItem = (props) => {
 
 export default Gallery = (props) => {
     return (
-      <ScrollView style = {scrollArea}>
+      <ScrollView>
         <View style = {container}>
         {
-          // props.imageArr.length ? props.imageArr.map((item, index) => <GalleryItem 
-          //           handleClick = {props.onGalleryItemClick} 
-          //           key={index} 
-          //           name = {item.user.name} 
-          //           url = {item.urls.small}
-          //           fullSizeUrl = {item.urls.regular} />) :
-                    <ActivityIndicator size="large" animating={true} color="white"/> 
+          props.imageArr.length ? props.imageArr.map((item, index) => <GalleryItem 
+                    handleClick = {props.onGalleryItemClick} 
+                    key={index} 
+                    name = {item.user.name} 
+                    url = {item.urls.small}
+                    fullSizeUrl = {item.urls.regular} />) :
+                    null 
         }
         </View>
       </ScrollView>

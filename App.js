@@ -4,8 +4,6 @@ import GalleryPageTemplate from './src/Components/GalleryPageTemplate'
 import {createStackNavigator} from 'react-navigation'
 
 
-
-
 const Routes = createStackNavigator({
   Home : HomePage,
   GalleryPageTemplate : GalleryPageTemplate
